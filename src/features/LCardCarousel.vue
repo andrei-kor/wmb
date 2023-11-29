@@ -1,13 +1,13 @@
 <template>
-    <div class="card-carousel">
+    <div v-if="list.length" class="card-carousel">
         <l-button width="70" height="150" :disable="isLeftButtonDisable" @click="handleLeft">
             <l-icon width="40" height="40" color="#3780B5">
                 <left />
             </l-icon>
         </l-button>
         <l-card
-            :title="cardList[currentCardId].title"
-            :translated-title="cardList[currentCardId].translatedTitle"
+            :title="list[currentCardPosition].valueTextOrigin"
+            :translated-title="list[currentCardPosition].valueTextTranslated"
         />
         <l-button width="70" height="150" :disable="isRightButtonDisable" @click="handleRight">
             <l-icon width="40" height="40" color="#3780B5">
@@ -24,29 +24,30 @@ import Left from '@/components/icons/Left.vue';
 import LIcon from '@/components/LIcon.vue';
 import LButton from '@/components/LButton.vue';
 import Right from '@/components/icons/Right.vue';
-import { computed, ref } from 'vue';
+import { computed, PropType, ref } from 'vue';
+import { Phrase } from '@/features/AddPhrase/types';
 
-const cardList = [
-    { id: 0, title: 'Card 1', translatedTitle: 'Перевод 1' },
-    { id: 1, title: 'Card 2', translatedTitle: 'Перевод 2' },
-    { id: 2, title: 'Card 3', translatedTitle: 'Перевод 3' },
-    { id: 3, title: 'Card 4', translatedTitle: 'Перевод 4' },
-];
+const props = defineProps({
+    list: {
+        type: Array as PropType<Phrase[]>,
+        default: () => [],
+    },
+});
 
-const currentCardId = ref(0);
-const isLeftButtonDisable = computed(() => currentCardId.value === 0);
-const isRightButtonDisable = computed(() => currentCardId.value === cardList.length - 1);
+const currentCardPosition = ref(0);
+const isLeftButtonDisable = computed(() => currentCardPosition.value === 0);
+const isRightButtonDisable = computed(() => currentCardPosition.value === props.list.length - 1);
 
 const handleLeft = () => {
-    currentCardId.value > 0 ? (currentCardId.value -= 1) : false;
+    currentCardPosition.value > 0 ? (currentCardPosition.value -= 1) : false;
 };
 
 const handleRight = () => {
-    currentCardId.value < cardList.length ? (currentCardId.value += 1) : false;
+    currentCardPosition.value < props.list.length ? (currentCardPosition.value += 1) : false;
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .card-carousel {
     display: flex;
     align-items: center;

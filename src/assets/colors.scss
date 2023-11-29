@@ -1,0 +1,9 @@
+$colors: (
+    grey001: #e0e0e0,
+);
+
+@function get_color($color) {
+    @return map-get($colors, $color);
+}
+
+$--grey-001: get_color(grey001);
