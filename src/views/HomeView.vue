@@ -1,18 +1,36 @@
 <template>
     <div class="main-search__wrapper">
-        <main-search />
+        <!--        <main-search />-->
     </div>
     <div class="carousel__wrapper">
-        <card-carousel />
+        <l-card-carousel :list="phraseList" />
     </div>
+
+    <add-phrase v-model:phraseForm="addPhraseForm" />
+
+    <l-phrase-list :list="phraseList" />
 </template>
 
 <script setup lang="ts">
-import CardCarousel from '@/features/CardCarousel.vue';
-import MainSearch from '@/features/MainSearch.vue';
+import LCardCarousel from '@/features/LCardCarousel.vue';
+import AddPhrase from '@/features/AddPhrase/AddPhrase.vue';
+import LPhraseList from '@/features/LPhraseList.vue';
+import { ref } from 'vue';
+import { AddPhraseForm } from '@/features/AddPhrase/types';
+import { phraseListStore } from '@/features/AddPhrase/store';
+import { storeToRefs } from 'pinia';
+
+const defaultAddPhraseForm = {
+    textTranslated: '',
+    textOrigin: '',
+};
+
+const addPhraseForm = ref<AddPhraseForm>({ ...defaultAddPhraseForm });
+
+const { list: phraseList } = storeToRefs(phraseListStore());
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .main-search__wrapper {
     display: flex;
     justify-content: center;

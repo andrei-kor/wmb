@@ -6,4 +6,4 @@
 import HomeView from '@/views/HomeView.vue';
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped></style>

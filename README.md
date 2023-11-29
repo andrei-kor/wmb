@@ -44,3 +44,7 @@ npm run build
 ```sh
 npm run lint
 ```
+
+### useful links for development
+- https://fraze.it/api.jsp?sk=1 API
+- 
