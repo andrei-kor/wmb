@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { AddPhraseForm } from './types';
+import { AddPhraseForm, Phrase } from './types';
 import LButton from '@/components/LButton.vue';
 import LInput from '@/components/LInput.vue';
 import { onMounted, PropType, Ref, ref, watch } from 'vue';
@@ -26,17 +26,28 @@ const props = defineProps({
         type: Object as PropType<AddPhraseForm>,
         required: true,
     },
+    editedCard: {
+        type: Object as PropType<Phrase>,
+        default: null,
+    },
 });
 
 const phraseList = phraseListStore();
 
-const inputPhraseForm: Ref<AddPhraseForm> = ref({
+const defaultPhrase = {
     textTranslated: '',
     textOrigin: '',
-});
+};
+const inputPhraseForm: Ref<AddPhraseForm> = ref({ ...defaultPhrase });
 
 const onSendForm = () => {
-    phraseList.addPhrase(inputPhraseForm.value);
+    if (props.editedCard) {
+        phraseList.editPhrase(inputPhraseForm.value, props.editedCard.valueId);
+    }
+    if (!props.editedCard) {
+        phraseList.addPhrase(inputPhraseForm.value);
+    }
+    inputPhraseForm.value = { ...defaultPhrase };
 };
 
 watch(

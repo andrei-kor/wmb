@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 // import Search from '@/components/icons/Search.vue';
 // import LIcon from '@/components/LIcon.vue';
 // import LButton from '@/components/LButton.vue';
@@ -26,6 +26,7 @@ const props = defineProps({
         required: true,
     },
 });
+
 const emit = defineEmits(['update:modelValue']);
 
 const localValue = ref<string | number>(props.modelValue);
@@ -34,6 +35,13 @@ const handleInput = (inputValue: string | number) => {
     localValue.value = inputValue;
     emit('update:modelValue', inputValue);
 };
+
+watch(
+    () => props.modelValue,
+    () => {
+        localValue.value = props.modelValue;
+    }
+);
 </script>
 
 <style lang="scss"></style>
