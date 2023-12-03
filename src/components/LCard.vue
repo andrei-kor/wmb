@@ -1,6 +1,6 @@
 <template>
     <div class="card" @click="cardClickHandler">
-        <div v-if="isAnswer" class="card__title">{{ title }}</div>
+        <div v-if="isWordSide" class="card__title">{{ title }}</div>
         <div v-else class="card__title">{{ translatedTitle }}</div>
     </div>
 </template>
@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { defineProps, ref } from 'vue';
 
-const props = defineProps({
+defineProps({
     title: {
         type: String,
         required: true,
@@ -19,14 +19,14 @@ const props = defineProps({
     },
 });
 
-const isAnswer = ref(false);
+const isWordSide = ref(false);
 
 const cardClickHandler = () => {
-    isAnswer.value = !isAnswer.value;
+    isWordSide.value = !isWordSide.value;
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/base';
 
 .card {
@@ -37,6 +37,11 @@ const cardClickHandler = () => {
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
+    }
 
     &__title {
         font-size: 24px;

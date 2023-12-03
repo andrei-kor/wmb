@@ -1,0 +1,15 @@
+$colors: (
+    grey001: #e0e0e0,
+    grey010: #bbbbbb,
+
+    blue020: #a0b6fd,
+);
+
+@function get_color($color) {
+    @return map-get($colors, $color);
+}
+
+$--grey-001: get_color(grey001);
+$--grey-010: get_color(grey010);
+
+$--blue-020: get_color(blue020);

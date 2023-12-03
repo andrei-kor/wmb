@@ -40,7 +40,7 @@ const onClick = (e) => {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 button {
     cursor: pointer;
 }
