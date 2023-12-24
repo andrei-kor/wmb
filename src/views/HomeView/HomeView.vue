@@ -50,7 +50,6 @@ const onEditPhrase = async (id: Phrase['valueId']) => {
     justify-content: center;
 }
 .carousel__wrapper {
-    margin-top: 40px;
     display: flex;
     justify-content: center;
 }

@@ -30,8 +30,10 @@ defineEmits<{
 </script>
 
 <style scoped lang="scss">
+@import '@/assets/colors';
+
 .phrase-list {
-    color: #e0e0e0;
+    color: $--grey-001;
     margin: 50px;
 }
 </style>
