@@ -1,10 +1,15 @@
 @import "base.scss";
 @import "revrite.scss";
 @import "colors.scss";
+@import "reset.scss";
 
 #app {
   max-width: 1280px;
   font-weight: normal;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+div, span{
+  color: #e0e0e0;
 }

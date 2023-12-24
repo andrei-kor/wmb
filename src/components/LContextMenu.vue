@@ -65,6 +65,8 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/colors';
+
 .context-menu {
     position: relative;
 
@@ -88,7 +90,7 @@ onBeforeUnmount(() => {
         left: 17px;
         display: flex;
         align-items: center;
-        background-color: #a0b6fd;
+        background-color: $--blue-020;
         opacity: 0.8;
         height: 30px;
         border-radius: 3px;
