@@ -32,6 +32,7 @@ const cardClickHandler = () => {
 .card {
     width: 500px;
     height: 300px;
+    padding: 20px;
     border-radius: 30px;
     background: $--vt-c-text-dark-2;
     display: flex;
@@ -47,6 +48,7 @@ const cardClickHandler = () => {
         font-size: 24px;
         font-weight: bold;
         transition: 0.3s;
+        text-align: center;
     }
 }
 </style>
