@@ -1,7 +1,8 @@
 <template>
     <div class="list-item" @mouseenter="mouseHandle" @mouseleave="mouseHandle">
+        <l-status :custom-classes="'el-status'" :status="phraseItem.status" />
         <div class="item__text">
-            <span>{{ index + 1 }}. </span><span>{{ phraseItem.valueTextOrigin }} - </span>
+            <span>{{ phraseItem.valueTextOrigin }} - </span>
             <span>{{ phraseItem.valueTextTranslated }}</span>
         </div>
         <l-context-menu
@@ -16,6 +17,7 @@
 import LContextMenu from '@/components/LContextMenu.vue';
 import { PropType, ref } from 'vue';
 import { Phrase } from '@/features/AddPhrase/types';
+import LStatus from '@/components/LStatus.vue';
 
 defineProps({
     phraseItem: {
@@ -62,8 +64,11 @@ const onEditPhrase = (id: Phrase['valueId']) => {
 .list-item {
     display: inline-flex;
     align-items: center;
-
     margin: 7px 0;
+
+    .el-status {
+        margin-right: 10px;
+    }
 
     .item__text {
         display: inline-block;
