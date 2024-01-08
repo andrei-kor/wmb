@@ -2,7 +2,10 @@ $colors: (
     grey001: #e0e0e0,
     grey010: #bbbbbb,
 
+    blue015: #9bdaf3,
     blue020: #a0b6fd,
+
+    green100: #2f7b15,
 );
 
 @function get_color($color) {
@@ -12,4 +15,7 @@ $colors: (
 $--grey-001: get_color(grey001);
 $--grey-010: get_color(grey010);
 
+$--blue-015: get_color(blue015);
 $--blue-020: get_color(blue020);
+
+$--green-100: get_color(green100);

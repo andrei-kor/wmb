@@ -1,8 +1,4 @@
-export enum PhraseStatus {
-    IN_ORDER = 'IN_ORDER',
-    IN_PROCESS = 'IN_PROCESS',
-    COMPLETED = 'COMPLETED',
-}
+type PhraseStatus = 0 | 1 | 2 | 3 | 4 | 5;
 
 export interface Phrase {
     valueId: string;

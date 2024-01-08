@@ -1,4 +1,4 @@
-import { AddPhraseForm, Phrase, PhraseStatus } from '@/features/AddPhrase/types';
+import { AddPhraseForm, Phrase } from '@/features/AddPhrase/types';
 import { v4 as uuidv4 } from 'uuid';
 
 export const transformPhraseFormToCard = (phrase: AddPhraseForm): Phrase => {
@@ -7,6 +7,6 @@ export const transformPhraseFormToCard = (phrase: AddPhraseForm): Phrase => {
         valueTextOrigin: phrase.textOrigin,
         valueTextTranslated: phrase.textTranslated,
         addDate: new Date(),
-        status: PhraseStatus.IN_ORDER,
+        status: 0,
     };
 };
